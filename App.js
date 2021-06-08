@@ -27,13 +27,11 @@ export default function App() {
   };
 
   const preference = useMemo(
-    () => (
-      {
-        toggleTheme,
-        theme,
-      },
-      [theme]
-    )
+    () => ({
+      toggleTheme,
+      theme,
+    }),
+    [theme]
   );
 
   return (
@@ -45,7 +43,9 @@ export default function App() {
           barStyle={theme === 'dark' ? 'light-content' : 'dark-content'}
         />
         <NavigationContainer
-          theme={theme === 'dark' ? DarkThemePaper : DefaultThemePaper}
+          theme={
+            theme === 'dark' ? DarkThemeNavigation : DefaultThemeNavigation
+          }
         >
           <Navigation />
         </NavigationContainer>
