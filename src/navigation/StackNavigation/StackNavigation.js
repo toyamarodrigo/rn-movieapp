@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'react-native-paper';
+import { IconButton } from 'react-native-paper';
 import { StyleSheet, Text, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { Home, Movie, News, Popular, Search } from '../../screens';
@@ -8,7 +8,7 @@ const Stack = createStackNavigator();
 
 export const StackNavigation = ({ navigation }) => {
   const buttonLeft = () => {
-    return <Button icon="menu" onPress={() => navigation.openDrawer()} />;
+    return <IconButton icon="menu" onPress={() => navigation.openDrawer()} />;
   };
 
   return (
