@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import { StyleSheet, View } from 'react-native';
-import { DrawerContentScrollView } from '@react-navigation/drawer';
-import { Drawer, Switch, TouchableRipple, Text } from 'react-native-paper';
-import usePreference from '../../hooks/userPreferences';
+import React, { useState } from "react";
+import { StyleSheet, View } from "react-native";
+import { DrawerContentScrollView } from "@react-navigation/drawer";
+import { Drawer, Switch, TouchableRipple, Text } from "react-native-paper";
+
+import usePreference from "../../hooks/userPreferences";
 
 export const DrawerContent = ({ navigation }) => {
-  const [active, setActive] = useState('home');
+  const [active, setActive] = useState("home");
   const { theme, toggleTheme } = usePreference();
 
   const onChangeScreen = (screen) => {
@@ -17,26 +18,26 @@ export const DrawerContent = ({ navigation }) => {
     <DrawerContentScrollView>
       <Drawer.Section>
         <Drawer.Item
+          active={active === "home"}
           label="Home"
-          active={active === 'home'}
-          onPress={() => onChangeScreen('home')}
+          onPress={() => onChangeScreen("home")}
         />
         <Drawer.Item
+          active={active === "popular"}
           label="Popular Movies"
-          active={active === 'popular'}
-          onPress={() => onChangeScreen('popular')}
+          onPress={() => onChangeScreen("popular")}
         />
         <Drawer.Item
+          active={active === "news"}
           label="New Movies"
-          active={active === 'news'}
-          onPress={() => onChangeScreen('news')}
+          onPress={() => onChangeScreen("news")}
         />
       </Drawer.Section>
       <Drawer.Section title="Theme">
         <TouchableRipple>
           <View style={styles.preferences}>
             <Text>Dark Theme</Text>
-            <Switch value={theme === 'dark'} onValueChange={toggleTheme} />
+            <Switch value={theme === "dark"} onValueChange={toggleTheme} />
           </View>
         </TouchableRipple>
       </Drawer.Section>
@@ -46,9 +47,9 @@ export const DrawerContent = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   preferences: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     paddingVertical: 12,
     paddingHorizontal: 16,
   },

@@ -1,1 +1,1 @@
-export * from './StackNavigation';
+export * from "./StackNavigation";
