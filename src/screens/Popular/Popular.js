@@ -1,14 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { ScrollView, StyleSheet, View, Image } from "react-native";
-import { Text } from "react-native-paper";
+import { Title, Text } from "react-native-paper";
 import { map } from "lodash";
+import { Rating } from "react-native-ratings";
 
+import starDark from "../../assets/png/starDark.png";
+import starLight from "../../assets/png/starLight.png";
+import userPreferences from "../../hooks/userPreferences";
 import { BASE_PATH_IMG } from "../../utils/constants";
 import noImage from "../../assets/png/default-image.png";
 import { getPopularMoviesApi } from "../../api/movies";
 
 export const Popular = ({ navigation }) => {
   const [movies, setMovies] = useState(null);
+  const { theme } = userPreferences();
 
   useEffect(() => {
     (async () => {
@@ -21,13 +26,13 @@ export const Popular = ({ navigation }) => {
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       {map(movies, (movie, index) => (
-        <Movie key={index} movie={movie} />
+        <Movie key={index} movie={movie} theme={theme} />
       ))}
     </ScrollView>
   );
 };
 
-function Movie({ movie: { poster_path } }) {
+function Movie({ theme, movie: { poster_path, title, release_date, vote_count, vote_average } }) {
   return (
     <View style={styles.movie}>
       <View style={styles.left}>
@@ -37,8 +42,29 @@ function Movie({ movie: { poster_path } }) {
         />
       </View>
       <View style={styles.right}>
-        <Text>RIGHT</Text>
+        <Title>{title}</Title>
+        <Text>{release_date}</Text>
+        <MovieRating theme={theme} voteAverage={vote_average} voteCount={vote_count} />
       </View>
+    </View>
+  );
+}
+
+function MovieRating({ theme, voteAverage, voteCount }) {
+  const average = voteAverage / 2;
+
+  return (
+    <View style={styles.viewRating}>
+      <Rating
+        imageSize={20}
+        ratingBackgroundColor={theme === "dark" ? "#192734" : "#f0f0f0"}
+        ratingColor="#ffc205"
+        ratingImage={theme === "dark" ? starDark : starLight}
+        startingValue={average}
+        style={{ marginRight: 15 }}
+        type="custom"
+      />
+      <Text style={{ fontsize: 12, marginTop: 5, color: "#8697a5" }}>{voteCount} votes</Text>
     </View>
   );
 }
@@ -55,5 +81,10 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 150,
+  },
+  viewRating: {
+    alignItems: "flex-start",
+    justifyContent: "flex-start",
+    marginTop: 10,
   },
 });
