@@ -45,3 +45,15 @@ export function getAllGenresApi() {
       return result;
     });
 }
+
+export function getGenreMoviesApi(genreID) {
+  const url = `${API_HOST}/discover/movie?api_key=${API_KEY}&with_genres=${genreID}&language=${LANG}`;
+
+  return fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then((result) => {
+      return result;
+    });
+}
