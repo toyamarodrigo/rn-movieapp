@@ -12,7 +12,6 @@ import { BASE_PATH_IMG } from "../../utils/constants";
 import { getMovieByIdApi } from "../../api/movies";
 
 export const Movie = ({
-  route,
   route: {
     params: { id },
   },
@@ -32,11 +31,15 @@ export const Movie = ({
 
   return (
     <>
-      <ScrollView>
+      <ScrollView showsVerticalScrollIndicator={false}>
         <MovieImage posterPath={movie.poster_path} />
         <MovieTrailer setShowVideo={setShowVideo} />
         <MovieTitle movie={movie} />
         <MovieRating voteAverage={movie.vote_average} voteCount={movie.vote_count} />
+        <Text style={styles.overview}>{movie.overview}</Text>
+        <Text style={[styles.overview, { marginBottom: 30 }]}>
+          Release Date: {movie.release_date}
+        </Text>
       </ScrollView>
       <ModalVideo movieID={id} setShowVideo={setShowVideo} showVideo={showVideo} />
     </>
@@ -142,5 +145,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     flexDirection: "row",
     alignItems: "center",
+  },
+  overview: {
+    marginHorizontal: 30,
+    marginTop: 20,
+    textAlign: "justify",
+    color: "#8697a5",
   },
 });
