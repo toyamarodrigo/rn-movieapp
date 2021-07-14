@@ -11,13 +11,13 @@ const { width } = Dimensions.get("window");
 
 const ITEM_WIDTH = Math.round(width * 0.7);
 
-export default function CarouselVertical({ data }) {
+export default function CarouselVertical({ data, navigation }) {
   return (
     <Carousel
       data={data}
       itemWidth={ITEM_WIDTH}
       layout={"default"}
-      renderItem={(item) => <RenderItem data={item} />}
+      renderItem={(item) => <RenderItem data={item} navigation={navigation} />}
       sliderWidth={width}
     />
   );
@@ -26,8 +26,9 @@ export default function CarouselVertical({ data }) {
 function RenderItem({
   data,
   data: {
-    item: { title, poster_path, genre_ids },
+    item: { id, title, poster_path, genre_ids },
   },
+  navigation,
 }) {
   const [genres, setGenres] = useState(null);
   const imageURL = `${BASE_PATH_IMG}/w500${poster_path}`;
@@ -40,8 +41,12 @@ function RenderItem({
     })();
   }, []);
 
+  const onNavigation = () => {
+    navigation.navigate("movie", { id });
+  };
+
   return (
-    <TouchableWithoutFeedback onPress={() => {}}>
+    <TouchableWithoutFeedback onPress={onNavigation}>
       <View style={styles.card}>
         <Image source={{ uri: imageURL }} style={styles.image} />
         <Title style={styles.title}>{title}</Title>

@@ -11,6 +11,7 @@ export const StackNavigation = ({ navigation }) => {
   const buttonLeft = (screen) => {
     switch (screen) {
       case "search":
+      case "movie":
         return <IconButton icon="arrow-left" onPress={() => navigation.goBack()} />;
       default:
         return <IconButton icon="menu" onPress={() => navigation.openDrawer()} />;
@@ -42,7 +43,11 @@ export const StackNavigation = ({ navigation }) => {
       <Stack.Screen
         component={Movie}
         name="movie"
-        options={{ title: "", headerLeft: () => buttonLeft("movie") }}
+        options={{
+          title: "Movies",
+          headerLeft: () => buttonLeft("movie"),
+          headerRight: () => buttonRight(),
+        }}
       />
       <Stack.Screen
         component={News}
