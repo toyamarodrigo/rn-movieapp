@@ -44,7 +44,8 @@ export const StackNavigation = ({ navigation }) => {
         component={Movie}
         name="movie"
         options={{
-          title: "Movies",
+          title: "",
+          headerTransparent: true,
           headerLeft: () => buttonLeft("movie"),
           headerRight: () => buttonRight(),
         }}
