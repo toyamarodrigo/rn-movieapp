@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Image, ScrollView } from "react-native";
-import { IconButton, Text, Title } from "react-native-paper";
+import { IconButton } from "react-native-paper";
 
 import ModalVideo from "../../components/ModalVideo";
 import { BASE_PATH_IMG } from "../../utils/constants";
@@ -31,7 +31,7 @@ export const Movie = ({
         <MovieImage posterPath={movie.poster_path} />
         <MovieTrailer setShowVideo={setShowVideo} />
       </ScrollView>
-      <ModalVideo setShowVideo={setShowVideo} showVideo={showVideo} />
+      <ModalVideo movieID={id} setShowVideo={setShowVideo} showVideo={showVideo} />
     </>
   );
 };

@@ -1,5 +1,3 @@
-import { forEach } from "lodash";
-
 import { API_HOST, API_KEY, LANG } from "../utils/constants";
 
 export function getNewsMoviesApi(page = 1) {
@@ -60,6 +58,18 @@ export function getGenreMoviesApi(genreID) {
 
 export function getMovieByIdApi(movieID) {
   const url = `${API_HOST}/movie/${movieID}?api_key=${API_KEY}&language=${LANG}`;
+
+  return fetch(url)
+    .then((res) => {
+      return res.json();
+    })
+    .then((result) => {
+      return result;
+    });
+}
+
+export function getVideoMovieApi(movieID) {
+  const url = `${API_HOST}/movie/${movieID}/videos?api_key=${API_KEY}&language=${LANG}`;
 
   return fetch(url)
     .then((res) => {
