@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Image, ScrollView } from "react-native";
 import { IconButton, Title, Text } from "react-native-paper";
 import { map } from "lodash";
+import { Rating } from "react-native-ratings";
 
+import userPreferences from "../../hooks/userPreferences";
+import starDark from "../../assets/png/starDark.png";
+import starLight from "../../assets/png/starLight.png";
 import ModalVideo from "../../components/ModalVideo";
 import { BASE_PATH_IMG } from "../../utils/constants";
 import { getMovieByIdApi } from "../../api/movies";
@@ -32,6 +36,7 @@ export const Movie = ({
         <MovieImage posterPath={movie.poster_path} />
         <MovieTrailer setShowVideo={setShowVideo} />
         <MovieTitle movie={movie} />
+        <MovieRating voteAverage={movie.vote_average} voteCount={movie.vote_count} />
       </ScrollView>
       <ModalVideo movieID={id} setShowVideo={setShowVideo} showVideo={showVideo} />
     </>
@@ -75,6 +80,27 @@ function MovieTitle({ movie }) {
   );
 }
 
+function MovieRating({ voteCount, voteAverage }) {
+  const average = voteAverage / 2;
+  const { theme } = userPreferences();
+
+  return (
+    <View style={styles.viewRating}>
+      <Rating
+        imageSize={20}
+        ratingBackgroundColor={theme === "dark" ? "#192734" : "#f0f0f0"}
+        ratingColor="#ffc205"
+        ratingImage={theme === "dark" ? starDark : starLight}
+        startingValue={average}
+        style={{ marginRight: 15 }}
+        type="custom"
+      />
+      <Text style={{ fontSize: 16, marginRight: 15 }}>{average}</Text>
+      <Text style={{ fontSize: 12, color: "#8697a5" }}>{voteCount} votes</Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   viewPoster: {
     shadowColor: "#000",
@@ -110,5 +136,11 @@ const styles = StyleSheet.create({
   genre: {
     marginRight: 10,
     color: "#8697a5",
+  },
+  viewRating: {
+    marginHorizontal: 30,
+    marginTop: 10,
+    flexDirection: "row",
+    alignItems: "center",
   },
 });
