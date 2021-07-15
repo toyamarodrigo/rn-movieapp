@@ -27,6 +27,8 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Movie App made with React Native + Expo for learning purposes",
+    "githubUrl": "https://github.com/toyamarodrigo/rn-movieapp"
   }
 }

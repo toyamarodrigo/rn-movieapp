@@ -24,7 +24,6 @@ export default function CarouselVertical({ data, navigation }) {
 }
 
 function RenderItem({
-  data,
   data: {
     item: { id, title, poster_path, genre_ids },
   },
@@ -71,7 +70,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 10,
     },
-    shadowOpacity: 1,
+    shadowOpacity: 0.5,
     shadowRadius: 10,
   },
   image: {

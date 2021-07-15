@@ -24,7 +24,6 @@ export default function CarouselMulti({ data, navigation }) {
 }
 
 function RenderItem({
-  data,
   data: {
     item: { id, title, poster_path },
   },
@@ -33,7 +32,7 @@ function RenderItem({
   const imageURL = `${BASE_PATH_IMG}/w500${poster_path}`;
 
   const onNavigation = () => {
-    navigation.navigate(id);
+    navigation.navigate("movie", { id });
   };
 
   return (

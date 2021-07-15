@@ -1,105 +1,120 @@
 import { API_HOST, API_KEY, LANG } from "../utils/constants";
 
-export function getNewsMoviesApi(page = 1) {
-  const url = `${API_HOST}/movie/now_playing?api_key=${API_KEY}&language=${LANG}&page=${page}`;
+export async function getNewsMoviesApi(page = 1) {
+  try {
+    const url = `${API_HOST}/movie/now_playing?api_key=${API_KEY}&language=${LANG}&page=${page}`;
 
-  return fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      return result;
-    });
+    const response = await fetch(url);
+    const result = await response.json();
+
+    return result;
+  } catch (error) {
+    console.error(error);
+
+    return null;
+  }
 }
 
-export function getGenreMovieApi(genreID) {
-  const url = `${API_HOST}/genre/movie/list?api_key=${API_KEY}&language=${LANG}`;
+export async function getGenreMovieApi(genreID) {
+  try {
+    const url = `${API_HOST}/genre/movie/list?api_key=${API_KEY}&language=${LANG}`;
+    const response = await fetch(url);
+    const result = await response.json();
 
-  return fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      const arrayGenres = [];
+    const arrayGenres = [];
 
-      genreID.forEach((id) => {
-        result.genres.forEach((item) => {
-          if (item.id === id) arrayGenres.push(item.name);
-        });
+    genreID.forEach((id) => {
+      result.genres.forEach((item) => {
+        if (item.id === id) arrayGenres.push(item.name);
       });
-
-      return arrayGenres;
     });
+
+    return arrayGenres;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
 }
 
-export function getAllGenresApi() {
-  const url = `${API_HOST}/genre/movie/list?api_key=${API_KEY}&language=${LANG}`;
+export async function getAllGenresApi() {
+  try {
+    const url = `${API_HOST}/genre/movie/list?api_key=${API_KEY}&language=${LANG}`;
+    const response = await fetch(url);
+    const result = await response.json();
 
-  return fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      return result;
-    });
+    return result;
+  } catch (error) {
+    return null;
+  }
 }
 
-export function getGenreMoviesApi(genreID) {
-  const url = `${API_HOST}/discover/movie?api_key=${API_KEY}&with_genres=${genreID}&language=${LANG}`;
+export async function getGenreMoviesApi(genreID) {
+  try {
+    const url = `${API_HOST}/discover/movie?api_key=${API_KEY}&with_genres=${genreID}&language=${LANG}`;
+    const response = await fetch(url);
+    const result = await response.json();
 
-  return fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      return result;
-    });
+    return result;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
 }
 
-export function getMovieByIdApi(movieID) {
-  const url = `${API_HOST}/movie/${movieID}?api_key=${API_KEY}&language=${LANG}`;
+export async function getMovieByIdApi(movieID) {
+  try {
+    const url = `${API_HOST}/movie/${movieID}?api_key=${API_KEY}&language=${LANG}`;
+    const response = await fetch(url);
+    const result = await response.json();
 
-  return fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      return result;
-    });
+    return result;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
 }
 
-export function getVideoMovieApi(movieID) {
-  const url = `${API_HOST}/movie/${movieID}/videos?api_key=${API_KEY}&language=${LANG}`;
+export async function getVideoMovieApi(movieID) {
+  try {
+    const url = `${API_HOST}/movie/${movieID}/videos?api_key=${API_KEY}&language=${LANG}`;
+    const response = await fetch(url);
+    const result = await response.json();
 
-  return fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      return result;
-    });
+    return result;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
 }
 
-export function getPopularMoviesApi(page = 1) {
-  const url = `${API_HOST}/movie/popular?api_key=${API_KEY}&language=${LANG}&page=${page}`;
+export async function getPopularMoviesApi(page = 1) {
+  try {
+    const url = `${API_HOST}/movie/popular?api_key=${API_KEY}&language=${LANG}&page=${page}`;
+    const response = await fetch(url);
+    const result = await response.json();
 
-  return fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      return result;
-    });
+    return result;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
 }
 
-export function searchMoviesApi(search) {
-  const url = `${API_HOST}/search/movie?api_key=${API_KEY}&language=${LANG}&query=${search}`;
+export async function searchMoviesApi(search) {
+  try {
+    const url = `${API_HOST}/search/movie?api_key=${API_KEY}&language=${LANG}&query=${search}`;
+    const response = await fetch(url);
+    const result = await response.json();
 
-  return fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((result) => {
-      return result;
-    });
+    return result;
+  } catch (error) {
+    console.log(error);
+
+    return null;
+  }
 }

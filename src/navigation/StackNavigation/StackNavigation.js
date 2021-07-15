@@ -1,6 +1,5 @@
 import React from "react";
 import { IconButton } from "react-native-paper";
-import { StyleSheet, Text, View } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { Home, Movie, News, Popular, Search } from "../../screens";

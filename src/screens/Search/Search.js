@@ -12,6 +12,7 @@ import {
 import { Searchbar } from "react-native-paper";
 import { map, size } from "lodash";
 
+import userPreferences from "../../hooks/userPreferences";
 import { BASE_PATH_IMG } from "../../utils/constants";
 import { searchMoviesApi } from "../../api/movies";
 
@@ -20,6 +21,7 @@ const { width } = Dimensions.get("window");
 export const Search = ({ navigation }) => {
   const [movies, setMovies] = useState(null);
   const [search, setSearch] = useState("");
+  const { theme } = userPreferences();
 
   useEffect(() => {
     if (size(search) > 2) {
@@ -37,7 +39,7 @@ export const Search = ({ navigation }) => {
         icon="arrow-left"
         iconColor="transparent"
         placeholder="Search movie"
-        style={styles.input}
+        style={[styles.input, { backgroundColor: theme === "dark" ? "#15212b" : "#fff" }]}
         onChangeText={(e) => setSearch(e)}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
@@ -72,7 +74,6 @@ function Movie({ movie: { id, title, poster_path }, navigation }) {
 const styles = StyleSheet.create({
   input: {
     marginTop: -3,
-    backgroundColor: "#15212b",
   },
   container: {
     flex: 1,

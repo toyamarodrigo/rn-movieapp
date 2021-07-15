@@ -3,6 +3,7 @@ import { StyleSheet, View, ScrollView } from "react-native";
 import { Title, Text } from "react-native-paper";
 import { map } from "lodash";
 
+import userPreferences from "../../hooks/userPreferences";
 import { getNewsMoviesApi, getAllGenresApi, getGenreMoviesApi } from "../../api/movies";
 import CarouselVertical from "../../components/CarouselVertical";
 import CarouselMulti from "../../components/CarouselMulti";
@@ -12,6 +13,7 @@ export const Home = ({ navigation }) => {
   const [genreList, setGenreList] = useState([]);
   const [genreSelected, setGenreSelected] = useState(28);
   const [genreMovies, setGenreMovies] = useState(null);
+  const { theme } = userPreferences();
 
   useEffect(() => {
     (async () => {
@@ -55,7 +57,19 @@ export const Home = ({ navigation }) => {
           {map(genreList, (genre) => (
             <Text
               key={genre.id}
-              style={[styles.genre, { color: genre.id !== genreSelected ? "#8697a5" : "#fff" }]}
+              style={[
+                styles.genre,
+                {
+                  color:
+                    theme === "dark"
+                      ? genre.id !== genreSelected
+                        ? "#8697a5"
+                        : "#fff"
+                      : genre.id !== genreSelected
+                      ? "#8697a5"
+                      : "#000",
+                },
+              ]}
               onPress={() => onChangeGenre(genre.id)}
             >
               {genre.name}
