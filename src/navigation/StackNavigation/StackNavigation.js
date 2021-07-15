@@ -71,7 +71,7 @@ export const StackNavigation = ({ navigation }) => {
       <Stack.Screen
         component={Search}
         name="search"
-        options={{ title: "", headerLeft: () => buttonLeft("search") }}
+        options={{ title: "", headerTransparent: true, headerLeft: () => buttonLeft("search") }}
       />
     </Stack.Navigator>
   );

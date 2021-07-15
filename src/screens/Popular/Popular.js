@@ -96,7 +96,7 @@ function MovieRating({ theme, voteAverage, voteCount }) {
         style={{ marginRight: 15 }}
         type="custom"
       />
-      <Text style={{ fontsize: 12, marginTop: 5, color: "#8697a5" }}>{voteCount} votes</Text>
+      <Text style={{ fontSize: 12, marginTop: 5, color: "#8697a5" }}>{voteCount} votes</Text>
     </View>
   );
 }
