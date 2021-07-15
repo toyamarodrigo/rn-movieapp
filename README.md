@@ -20,15 +20,6 @@ Link: <exp://exp.host@toyama.rodrigo/rn-movieapp/>
 
 API: <https://www.themoviedb.org/>
 
-## Screenshot
-
-|            | Light | Dark |
-|------------|-------|------|
-| Home       |  ![HomeMovieApp](https://i.imgur.com/tyBPNaF.png)     |   ![HomeMovieApp](https://i.imgur.com/nbWO00E.png)   |
-| Popular    |   ![PopularMovieApp](https://i.imgur.com/uGATA5R.png)    |   ![PopularMovieApp](https://i.imgur.com/JCPdrmp.png)   |
-| New Movies |   ![NewMoviesApp](https://i.imgur.com/n1qKXCQ.png)    |   ![NewMoviesApp](https://i.imgur.com/4lP8t8Z.png)   |
-| Search     |   ![SearchMovieApp](https://i.imgur.com/67iX2Vo.png)    |   ![SearchMovieApp](https://i.imgur.com/x8KACOz.png)   |
-
 ## How to start locally
 
 You'll need Node and Expo before starting the app
@@ -42,3 +33,12 @@ You'll need Node and Expo before starting the app
 
 > yarn start
 ```
+
+## Screenshot
+
+|            | Light | Dark |
+|------------|-------|------|
+| Home       |  ![HomeMovieApp](https://i.imgur.com/tyBPNaF.png)     |   ![HomeMovieApp](https://i.imgur.com/nbWO00E.png)   |
+| Popular    |   ![PopularMovieApp](https://i.imgur.com/uGATA5R.png)    |   ![PopularMovieApp](https://i.imgur.com/JCPdrmp.png)   |
+| New Movies |   ![NewMoviesApp](https://i.imgur.com/n1qKXCQ.png)    |   ![NewMoviesApp](https://i.imgur.com/4lP8t8Z.png)   |
+| Search     |   ![SearchMovieApp](https://i.imgur.com/67iX2Vo.png)    |   ![SearchMovieApp](https://i.imgur.com/x8KACOz.png)   |
