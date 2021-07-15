@@ -2,9 +2,9 @@
 
 Project for learning purposes using React Native and Expo (iOS)
 
-Link: <exp://exp.host@toyama.rodrigo/rn-movieapp/>
+Link Demo: <exp://exp.host@toyama.rodrigo/rn-movieapp/>
 
-![ExpoDeploy](https://i.imgur.com/Iuh5pBH.png)
+![ExpoDemoQR](https://i.imgur.com/Iuh5pBH.png)
 
 ## What I used
 
@@ -22,7 +22,7 @@ API: <https://www.themoviedb.org/>
 
 ## How to start locally
 
-You'll need Node and Expo before starting the app
+You'll need Node and Expo before starting the app and make an account in www.themoviedb.org to request your API KEY
 
 ```sh
 > git clone https://github.com/toyamarodrigo/rn-movieapp.git
@@ -30,7 +30,17 @@ You'll need Node and Expo before starting the app
 > cd rn-movieapp
 
 > yarn install 
+```
 
+`src > utils > constants.js`
+
+change API_KEY with your api key you requested from www.themoviedb.org
+
+`export const API_KEY = "yourApiKey"`
+
+finally
+
+```sh
 > yarn start
 ```
 
