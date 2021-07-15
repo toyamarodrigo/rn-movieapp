@@ -4,7 +4,9 @@ Project for learning purposes using React Native and Expo (iOS)
 
 (Beware that I only styled this project for iOS devices. Some libraries or styling may not work on Android)
 
-Link Demo: <exp://exp.host@toyama.rodrigo/rn-movieapp/>
+Open link on device your: `exp://exp.host@toyama.rodrigo/rn-movieapp/`
+
+or Scan the QR code below
 
 ![ExpoDemoQR](https://i.imgur.com/Iuh5pBH.png)
 
